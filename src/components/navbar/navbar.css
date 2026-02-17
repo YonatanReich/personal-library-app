@@ -21,9 +21,55 @@
 }
 
 .nav-link {
-    @apply text-sm font-bold text-slate-500 hover:text-indigo-600 transition-colors;
+    /* Mobile First: Start small */
+    @apply text-sm px-2 py-1 font-bold text-black transition-all duration-300;
+
+    /* Desktop: Scale up at 640px (sm) and above */
+    @apply sm:text-base sm:px-4 sm:py-2;
+}
+
+.nav-link-active {
+    @apply text-indigo-600;
+    /* Soften the glow slightly for mobile screens */
+    text-shadow: 0 0 8px rgba(79, 70, 229, 0.4);
+    position: relative;
+}
+
+/* On desktop, we can make the glow a bit more intense */
+@screen sm {
+    .nav-link-active {
+        text-shadow: 0 0 12px rgba(79, 70, 229, 0.5);
+    }
+}
+
+.nav-link-active::after {
+    content: '';
+    /* We use -bottom-2 on desktop, but keep it tight on mobile */
+    @apply absolute -bottom-1 left-0 w-full h-0.5 bg-indigo-600 rounded-full;
+    box-shadow: 0 0 8px rgba(79, 70, 229, 0.8);
+    animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scaleX(0.85);
+        /* Slightly more dramatic shrink on mobile */
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
 }
 
 .logout-btn {
-    @apply text-sm font-bold text-red-400 hover:text-red-600 transition-colors;
+    @apply text-base font-bold text-indigo-600 transition-transform duration-200 inline-block;
+}
+
+.logout-btn:hover {
+    @apply text-indigo-800 scale-110;
+    /* Grows by 10% without moving other text */
 }

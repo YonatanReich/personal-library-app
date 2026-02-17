@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useUserAuth } from './context/AuthContext.jsx';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/navbar/navbar.jsx';
 import LoginPage from './pages/loginPage/loginPage.jsx';
 import SearchPage from './pages/searchPage/searchPage.jsx';
@@ -13,17 +14,32 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function App() {
+  const location = useLocation(); 
+
   return (
     <AuthProvider>
-      <Router>
-        <Navbar />
-        <Routes>
+      <Navbar />
+      
+      {/* mode="wait" ensures the old page fades out before the new one slides in */}
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/" element={<ProtectedRoute><SearchPage /></ProtectedRoute>} />
-          <Route path="/wishlist" element={<ProtectedRoute><WishlistPage /></ProtectedRoute>} />
+          
+          <Route path="/search" element={
+            <ProtectedRoute>
+              <SearchPage />
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/wishlist" element={
+            <ProtectedRoute>
+              <WishlistPage />
+            </ProtectedRoute>
+          } />
+
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      </Router>
+      </AnimatePresence>
     </AuthProvider>
   );
 }

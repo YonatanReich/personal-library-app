@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useUserAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import FallingBooks from '../../components/FallingBooks/FallingBooks.jsx';
+import PageTransition from '../../components/pageTransition.jsx';
+
 import './loginPage.css';
 
 const LoginPage = () => {
@@ -14,17 +16,22 @@ const LoginPage = () => {
     if (username.trim()) {
       // Calls the login function from our context
       login(username); 
-      // Redirects to the search page immediately
-      navigate('/'); 
+      // Redirects to the wishlist page immediately
+      navigate('/wishlist'); 
     }
   };
 
   return (
+    <PageTransition>
     <div className="login-container">
       <FallingBooks />
       <div className="login-box">
-        <h1 className="brand-name">LibraryTracker</h1>
-        <p className="welcome-text">Enter a username to start your collection</p>
+          <h1 className="App-name">
+            
+        <span className="text-indigo-600">Library</span>
+        <span className="text-black">Tracker</span>
+        </h1>
+        <p className="welcome-text">Log in to view your collection</p>
         
         <form onSubmit={handleSubmit} className="login-form">
           <input 
@@ -37,15 +44,12 @@ const LoginPage = () => {
             autoFocus
           />
           <button type="submit" className="enter-btn">
-            Enter Library
+            Take me to my books!
           </button>
         </form>
-        
-        <p className="hint-text">
-          No password needed. Your list is saved to this browser.
-        </p>
       </div>
-    </div>
+      </div>
+      </PageTransition>
   );
 };
 

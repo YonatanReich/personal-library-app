@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/**
+ * PAGE LAYOUT
+ * Sets a light slate background and consistent padding for the wishlist view.
+ */
 .page-container {
     @apply min-h-screen bg-slate-50 p-8;
 }
@@ -8,14 +12,27 @@
     @apply text-3xl font-black text-slate-800 mb-12 text-center tracking-tight;
 }
 
+/**
+ * EMPTY STATE
+ * Styling for the message displayed when no books have been saved yet.
+ */
 .empty-msg {
     @apply text-center text-slate-400 font-medium mt-20 text-lg;
 }
 
+/**
+ * GRID SYSTEM
+ * Maintains parity with the SearchPage grid for a consistent user experience.
+ */
 .book-grid {
     @apply max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6;
 }
 
+/**
+ * BOOK CARD
+ * - flex-col: Allows the card to grow vertically.
+ * - overflow-hidden: Clips the book cover image to the card's rounded corners.
+ */
 .book-card {
     @apply bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition-shadow flex flex-col;
 }
@@ -24,6 +41,10 @@
     @apply w-full h-64 object-cover;
 }
 
+/**
+ * CARD DETAILS
+ * - flex-1: Forces the details container to fill all remaining space in the card.
+ */
 .book-details {
     @apply p-5 flex flex-col flex-1;
 }
@@ -32,6 +53,11 @@
     @apply font-bold text-slate-800 truncate mb-4;
 }
 
+/**
+ * REMOVE BUTTON
+ * - mt-auto: Pushes the button to the very bottom of the card regardless of title length.
+ * - transition-all: Smoothly swaps colors from neutral slate to "warning" red on hover.
+ */
 .remove-btn {
     @apply mt-auto w-full py-2 bg-slate-50 text-slate-400 font-bold rounded-xl hover:bg-red-50 hover:text-red-600 border border-transparent hover:border-red-100 transition-all text-sm;
 }

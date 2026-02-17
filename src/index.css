@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+
+
+/* Global Reset */
+html,
+body {
+    /* Only show scrollbars if content overflows the viewport */
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Prevents accidental horizontal shifting */
+    height: 100%;
+}
+
+/* Apply 'auto' behavior to all scrollable elements by default */
+* {
+    scrollbar-gutter: stable;
+    /* Optional: Prevents layout jump when scrollbar appears */
+}
+
+/* Custom Scrollbar Styling for everything */
+::-webkit-scrollbar {
+    width: 8px;
+    /* Width of the vertical scrollbar */
+    height: 8px;
+    /* Height of the horizontal scrollbar */
+}
+
+/* The track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+/* The draggable handle */
+::-webkit-scrollbar-thumb {
+    @apply bg-indigo-400 rounded-full border-2 border-solid border-transparent bg-clip-padding;
+    transition: background-color 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-indigo-400;
+}

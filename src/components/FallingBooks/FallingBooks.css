@@ -1,19 +1,23 @@
 @import "tailwindcss";
 
 .animation-container {
-    @apply fixed inset-0 -z-10 overflow-hidden pointer-events-none;
+    @apply fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-gray-50;
 }
 
 .book-wrapper {
-    /* This allows the book to be interactive even though the container is hidden */
     @apply absolute cursor-pointer pointer-events-auto;
+    /* Updated shadow color to match blue theme */
+    filter: drop-shadow(0 12px 12px rgba(37, 99, 235, 0.1));
 }
 
-.book-icon {
-    @apply w-10 h-10 text-indigo-500/10 fill-indigo-100/5;
-    stroke-width: 1.2px;
+.book-model-icon {
+    /* Larger size and bold visibility */
+    @apply w-12 h-12 opacity-70;
+    stroke-width: 1.8px;
+    transition: opacity 0.3s ease;
 }
 
-.book-wrapper:hover .book-icon {
-    @apply text-indigo-600/40 fill-indigo-200/20;
+.book-wrapper:hover .book-model-icon {
+    /* Full color on hover */
+    @apply opacity-100;
 }

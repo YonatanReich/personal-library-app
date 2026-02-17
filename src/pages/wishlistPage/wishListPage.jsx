@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PageTransition from '../../components/pageTransition.jsx';
 import './wishlistPage.css';
 
 const WishlistPage = () => {
@@ -10,12 +11,13 @@ const WishlistPage = () => {
   }, []);
 
   const removeBook = (id) => {
-    const updated = wishlist.filter(b => b.id !== id);
-    setWishlist(updated);
-    localStorage.setItem('wishlist', JSON.stringify(updated));
+    const updatedWishList = wishlist.filter(b => b.id !== id);
+    setWishlist(updatedWishList);
+    localStorage.setItem('wishlist', JSON.stringify(updatedWishList));
   };
 
   return (
+    <PageTransition>
     <div className="page-container">
       <h1 className="page-title">My Wishlist</h1>
       <div className="book-grid">
@@ -33,7 +35,8 @@ const WishlistPage = () => {
           <p className="empty-msg">Your wishlist is empty.</p>
         )}
       </div>
-    </div>
+      </div>
+      </PageTransition>
   );
 };
 
