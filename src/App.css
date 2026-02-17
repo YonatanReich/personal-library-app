@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Global styles for the app shell. 
+  Specific component styles live in their respective folders.
+*/
+.main-placeholder {
+  @apply min-h-screen bg-slate-50;
+}
