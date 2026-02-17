@@ -8,17 +8,19 @@ export const AuthProvider = ({ children }) => {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
-  // Start with an empty list; we will fill it based on the user session
+  // Global state for the active user's wishlist
   const [wishlist, setWishlist] = useState([]);
 
-  
+  /**
+   * Syncs the wishlist whenever the user changes (Login/Logout).
+   * Prevents cross-user data leakage by using user-specific keys.
+   */
   useEffect(() => {
     if (user) {
-      // Use the user's unique ID to isolate their data from others
       const saved = localStorage.getItem(`wishlist_${user.id}`);
       setWishlist(saved ? JSON.parse(saved) : []);
     } else {
-      setWishlist([]); // Clear the list on logout to prevent data leakage
+      setWishlist([]); // Reset state on logout
     }
   }, [user]);
 
@@ -36,19 +38,25 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('Personal_library_user_ID');
   };
   
+  /**
+   * Adds a book to the current user's isolated storage bucket.
+   */
   const addToWishlist = (book) => {
-    // Only proceed if a user session exists
     if (!user) return;
-    const updated = [...wishlist, book];
-    // Sync to a user-specific key
-    localStorage.setItem(`wishlist_${user.id}`, JSON.stringify(updated));
-    setWishlist(updated);
+    setWishlist((prev) => {
+      if (prev.find(b => b.id === book.id)) return prev; // Duplicate check
+      const updated = [...prev, book];
+      localStorage.setItem(`wishlist_${user.id}`, JSON.stringify(updated));
+      return updated;
+    });
   };
 
+  /**
+   * Removes a book and updates the specific user's storage.
+   */
   const removeFromWishlist = (id) => {
     if (!user) return;
     const updated = wishlist.filter(b => b.id !== id);
-    // Sync to a user-specific key
     localStorage.setItem(`wishlist_${user.id}`, JSON.stringify(updated));
     setWishlist(updated);
   };
