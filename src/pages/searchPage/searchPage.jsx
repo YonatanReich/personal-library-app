@@ -20,13 +20,14 @@ const SearchPage = () => {
       setBooks([]);
       return;
     }
+    const apiKey = import.meta.env.VITE_GOOGLE_BOOKS_KEY;
 
     setLoading(true);
     try {
       //The API call - We want all matching books for the query, and each time we want to get them from the index of those we
       //already have. So in the first search we'll get books 0-40 that match the result, when we click load more we get 40-80 etc
       const res = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&startIndex=${index}&maxResults=${RESULTS_PER_PAGE}`
+        `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&startIndex=${index}&maxResults=${RESULTS_PER_PAGE}&key=${apiKey}`
       );
       
       const data = await res.json();
