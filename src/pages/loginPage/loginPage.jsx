@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useUserAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import FallingBooks from '../../components/FallingBooks/FallingBooks.jsx';
 import './loginPage.css';
 
 const LoginPage = () => {
@@ -20,6 +21,7 @@ const LoginPage = () => {
 
   return (
     <div className="login-container">
+      <FallingBooks />
       <div className="login-box">
         <h1 className="brand-name">LibraryTracker</h1>
         <p className="welcome-text">Enter a username to start your collection</p>

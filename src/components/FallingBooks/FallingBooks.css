@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+.animation-container {
+    @apply fixed inset-0 -z-10 overflow-hidden pointer-events-none;
+}
+
+.book-wrapper {
+    /* This allows the book to be interactive even though the container is hidden */
+    @apply absolute cursor-pointer pointer-events-auto;
+}
+
+.book-icon {
+    @apply w-10 h-10 text-indigo-500/10 fill-indigo-100/5;
+    stroke-width: 1.2px;
+}
+
+.book-wrapper:hover .book-icon {
+    @apply text-indigo-600/40 fill-indigo-200/20;
+}

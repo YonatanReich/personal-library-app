@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+.page-container {
+    @apply min-h-screen bg-slate-50 p-8;
+}
+
+.page-header {
+    @apply max-w-2xl mx-auto text-center mb-12;
+}
+
+.page-title {
+    @apply text-3xl font-black text-slate-800 mb-6;
+}
+
+.search-form {
+    @apply flex gap-2;
+}
+
+.search-input {
+    @apply flex-1 p-4 bg-white border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-400 transition-all;
+}
+
+.search-btn {
+    @apply bg-indigo-600 text-white px-8 rounded-2xl font-bold hover:bg-indigo-700 transition-all;
+}
+
+.book-grid {
+    @apply max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6;
+}
+
+.book-card {
+    @apply bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition-shadow;
+}
+
+.book-card img {
+    @apply w-full h-64 object-cover;
+}
+
+.book-details {
+    @apply p-5;
+}
+
+.book-details h3 {
+    @apply font-bold text-slate-800 truncate;
+}
+
+.book-details p {
+    @apply text-sm text-slate-500 mb-4;
+}
+
+.action-btn {
+    @apply w-full py-2 bg-slate-50 text-indigo-600 font-bold rounded-xl hover:bg-indigo-600 hover:text-white transition-all;
+}
