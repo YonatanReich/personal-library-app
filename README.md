@@ -11,7 +11,7 @@
 2. Installation
    Clone the repository and install the dependencies required for the React/Vite environment:
 
-   **Bash**
+   **Bash** <br>
    git clone <your-repo-url> <br>
    cd library-tracker <br>
    npm install
@@ -19,7 +19,7 @@
 3. Running the App
    Start the development server:
 
-   **Bash**
+   **Bash** <br>
    npm run dev <br>
 
    Open http://localhost:5173 in your browser.
