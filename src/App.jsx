@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useUserAuth } from './context/AuthContext.jsx';
+
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/navbar/navbar.jsx';
 import LoginPage from './pages/loginPage/loginPage.jsx';
@@ -37,9 +38,10 @@ function App() {
             </ProtectedRoute>
           } />
 
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
-      </AnimatePresence>
+        </AnimatePresence>
+     
     </AuthProvider>
   );
 }
