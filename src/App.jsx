@@ -6,7 +6,7 @@ import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/navbar/navbar.jsx';
 import LoginPage from './pages/loginPage/loginPage.jsx';
 import SearchPage from './pages/searchPage/searchPage.jsx';
-import WishlistPage from './pages/wishlistPage/wishlistPage.jsx';
+import WishlistPage from './pages/wishlistPage/wishListPage.jsx';
 import './App.css';
 
 const ProtectedRoute = ({ children }) => {
